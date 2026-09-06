@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felipe Osorio | Perfil</title>
+  <meta name="description" content="Descripción breve de tu perfil">
+
+  
+  <meta property="og:title" content="Felipe Osorio | Perfil">
+  <meta property="og:description" content="Perfil y avatar de Felipe>
+  <meta property="og:image" content="images.jpeg">
+  <meta property="og:url" content="https://github.com/FelipeOsorio  G/Web-1-Semana-2-Perfil.html.git">
+</head>
+<body>
+
+    <header>
+      
+      <h1>Felipe Osorio</h1>
+      <p>Estudiante de la Universidad de Caldas</p>
+      
+      <nav>
+    <ul>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#formacion">Formación</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+<main>
+    </header>
+
+    <section id="Acerca de mi" class="Tarjeta">
+      <h2>Sobre mí</h2>
+      <p>
+        Me llamo Felipe Osorio Grajales, soy un estudiante de la universidad 
+        de Caldas en estos momentos me gustaria concentrarme en mis estudios 
+        y si tengo tiempo un trabajo por horas.
+      </p>
+
+      <figure>
+        <img src="images.jpeg" alt="avatar de Felipe">
+        <figcaption>Foto tipo avatar de Felipe</figcaption>
+      </figure>
+    </section>
+
+    <section id="formacion">
+      <h2>Formación</h2>
+      <table>
+        <caption>Resumen de mi formación académica</caption>
+        <thead>
+          <tr>
+            <th>Institución</th>
+            <th>Título</th>
+            <th>Año</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Colegio Seminario Redentoristas</td>
+            <td>Colegiatura</td>
+            <td>2023</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+     <section id="habilidades">
+      <h2>Habilidades</h2>
+
+      <h3>Tecnologías que conozco</h3>
+      <ul>
+        <li>Tecnología en Internet de las Cosas (IoT)</li>
+        <li>Tecnología Ciberseguridad y Cloud Computing</li>
+        <li>Tecnología Inteligencia Artificial y Machine Learning</li>
+      </ul>
+
+      <h3>Top 3 para aprender este semestre</h3>
+      <ol>
+        <li>Vulnerabilidad en paginas Html</li>
+        <li>Programacion de Front</li>
+        <li>Programacion de Backend</li>
+      </ol>
+    </section>
+
+   <section id="contacto">
+      <h2>Contacto</h2>
+      <form>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required minlength="3">
+
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="asunto">Asunto</label>
+        <select id="asunto" name="asunto" required>
+          <option value="" disabled selected>Selecciona un asunto</option>
+          <option value="colaboracion">Colaboración</option>
+          <option value="consulta">Consulta</option>
+          <option value="otro">Otro</option>
+        </select>
+      
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required minlength="10"></textarea>
+
+        <label for="aceptar">
+          <input type="checkbox" id="aceptar" name="aceptar" required>
+          Acepto el tratamiento de mis datos
+        </label>
+
+        <button type="submit">Enviar</button>
+      </form>
+   </section>
+</main>
+
+<footer>
+    <p>Felipe.Osorio54371@ucaldas.edu.co | 2026</p>
+  </footer>
+
+</body>
+</html>
