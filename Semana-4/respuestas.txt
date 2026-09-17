@@ -1,0 +1,61 @@
+/*
+
+-------------------------EXPERIMENTO 1
+
+con FLEX
+-Al cerrar la ventana las lineas se hacen mas largas y la distribucion
+cambia, siendo 7 lineas horizontales largas que ocupan toda la pantalla
+hacia abajo y no 6 lineas distribuidas en un 2x3 y 1 linea larga debajo
+de estas 6 en pocas palabras FLEX puede ocupar/rellenar el espacio 
+disponible de la ultima linea haciendo mas grande la ultima tarjeta.
+
+-las filas quedan perfectamente alineadas.
+
+con GRID
+-Al cerrar la ventana las tarjetas se hacen pequeñas de forma uniforme y
+mantienen el mismo tamaño aunque les sobre espacio en la ultima linea,
+y cuando se quedan sin espacio simplemente se vuelven 7 lineas horizontales
+uniformes.
+
+-las lineas no quedan perfectamente alineadas.
+
+FLEXBOX resulta más util cuando quieres utilizar todo el espacio disponible
+en pantalla de forma alineada.
+
+
+-------------------------EXPERIMENTO 2
+
+justify-content trabaja sobre el eje principal
+align-items trabaja sobre el eje transversal.
+
+-------------------------EXPERIMENTO 3
+
+-En GRID al colocar una palabra demasiado larga o un enlace muy largo, la 
+columna no cambia su tamaño haciendo que la palabra se corte. cosa que con
+FLEX ocurre totalmente lo contrario, la palabra hace que la tarjeta se
+agrande y desalinee las demás columnas
+
+-min-width: 0 permite que el elemento se reduzca.
+overflow-wrap: break-word permite dividir palabras largas.
+overflow: hidden oculta el contenido que sobresale.
+
+Pero en mi caso la unica en la que note un cambio al utilizar los comandos
+fue overflow-wrap: break-word la cual si genero un cambio en GRID, por lo
+cual me quedo con esta
+
+-------------------------EXPERIMENTO 4
+
+No tuve que modificar ninguna línea del HTML. Solamente cambié las 
+propiedades de Grid en CSS. Esto permite cambiar completamente la 
+distribución visual de una página sin cambiar su estructura HTML.
+
+-------------------------EXPERIMENTO 5
+
+Con margin, cada elemento tiene su propio espacio de margen. Con gap, el 
+contenedor Flexbox o Grid controla directamente el espacio entre 
+sus elementos.
+
+
+
+
+*/
