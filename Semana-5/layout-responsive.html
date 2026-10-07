@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTienda - Layout responsive</title>
+    <link rel="stylesheet" href="css/layout-responsive.css">
+</head>
+<body>
+    <header class="cabecera">
+        <a class="logo" href="#">MiTienda</a>
+        <input class="buscador" type="search" placeholder="Buscar productos..." aria-label="Buscar productos">
+        <nav>
+            <ul class="menu">
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Mi cuenta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="resultados">
+        <h1>Resultados destacados</h1>
+        <section class="grilla-productos" aria-label="Productos">
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=21" alt="Producto 1"><h2>Producto 1</h2><p>Descripción corta del producto.</p><p class="precio">$99.900</p><button type="button">Ver producto</button></article>
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=22" alt="Producto 2"><h2>Producto 2</h2><p>Descripción corta del producto.</p><p class="precio">$79.900</p><button type="button">Ver producto</button></article>
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=23" alt="Producto 3"><h2>Producto 3</h2><p>Descripción corta del producto.</p><p class="precio">$149.900</p><button type="button">Ver producto</button></article>
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=24" alt="Producto 4"><h2>Producto 4</h2><p>Descripción corta del producto.</p><p class="precio">$59.900</p><button type="button">Ver producto</button></article>
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=25" alt="Producto 5"><h2>Producto 5</h2><p>Descripción corta del producto.</p><p class="precio">$129.900</p><button type="button">Ver producto</button></article>
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=26" alt="Producto 6"><h2>Producto 6</h2><p>Descripción corta del producto.</p><p class="precio">$89.900</p><button type="button">Ver producto</button></article>
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=27" alt="Producto 7"><h2>Producto 7</h2><p>Descripción corta del producto.</p><p class="precio">$199.900</p><button type="button">Ver producto</button></article>
+            <article class="tarjeta"><img src="https://picsum.photos/600/400?random=28" alt="Producto 8"><h2>Producto 8</h2><p>Descripción corta del producto.</p><p class="precio">$69.900</p><button type="button">Ver producto</button></article>
+        </section>
+    </main>
+
+    <aside class="filtros">
+        <h2>Filtros</h2>
+        <fieldset>
+            <legend>Categoría</legend>
+            <label><input type="checkbox"> Tecnología</label>
+            <label><input type="checkbox"> Hogar</label>
+            <label><input type="checkbox"> Ropa</label>
+        </fieldset>
+        <fieldset>
+            <legend>Precio</legend>
+            <label>Mínimo <input type="number" min="0"></label>
+            <label>Máximo <input type="number" min="0"></label>
+        </fieldset>
+    </aside>
+
+    <footer class="pie">
+        <div><h3>Empresa</h3><a href="#">Quiénes somos</a><a href="#">Empleo</a></div>
+        <div><h3>Ayuda</h3><a href="#">Envíos</a><a href="#">Devoluciones</a></div>
+        <div><h3>Legal</h3><a href="#">Términos</a><a href="#">Privacidad</a></div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,76 @@
+/*
+1.) HTTP y la web
+
+a.) El 404 Not Found significa que el servidor no puede encontrar los 
+recuross solicitados, o que encontro conexion pero no encontró ningún recurso en esa URL.
+El problema está en la URL y no en la conexion, además, el codigo
+404 solo indica que falta el recuros, no si la ausencia es temporal o 
+permante.
+
+b.)Revisaría primero la URL exacta de la petición fallida, la compararía con la ubicación 
+real del archivo en el servidor o el repositorio, 
+buscando diferencias de ruta ya sean mayúsculas, minúsculas o algun error de 
+escritura.
+
+2.) HTML SEMÁNTICO 
+
+<header>
+  <h1>Mi blog</h1>
+</header>
+<nav>…</nav>
+<main>
+  <article>
+    <h2>Mi viaje</h2>
+    <p>…</p>
+  </article>
+</main>
+
+
+justificacion:
+
+use <nav> en vez de <div class="links"> ya que le dice al lector de pantalla y
+a los buscadores que ese bloque es de navegacion, cosa que un div no hace.
+
+use <h2> en vez de <div class="titulo-grande"> ya que ayuda a mantener una jerarquia 
+cosa que con div no funciona ya que solo se va a ver más grande por el CSS.
+
+3.) Especificidad
+
+a.) se ve verde porque un id pesa más que cualquiera de clase o elemento, 
+sin importar cuántas clases haya.
+
+b.) Si se elimina la regla #zona p el texto quedaria de color morado ya que
+p.destacado tiene una importancia de (0,1,1) superando a .destacado que es de
+(0,1,0) y a "p" que es (0,0,1).
+
+4.) Box model
+
+a.)
+MODO            OPERACION                              ANCHO VISIBLE
+content-box     300 + 24·2 (padding) + 2·2 (borde) =   352px.
+border-box      el width ya incluye padding y borde.   300px.
+
+b.)Con border-box el width declarado es el ancho real de la caja, y agregar padding 
+o borde no la agranda. Así los cálculos de layout son predecibles y las cajas no se 
+desbordan de su contenedor.
+
+5.) Flexbox, Grid y responsive
+
+a.)
+
+- En la A Se nota en la última fila, cuando sobran tarjetas. En A (flex: 1 1 250px) 
+las tarjetas de la fila incompleta crecen para ocupar todo el ancho, así que quedan más 
+anchas que las de arriba.
+
+- En la B con (auto-fit, minmax) todas las columnas tienen el mismo ancho, y la última 
+fila deja huecos a la derecha.
+
+b.) Usaría la B porque todas las tarjetas miden lo mismo y se alinean en columnas sin 
+importar cuántas haya
+
+
+PARTE B
+
+no supe de donde descargar el avatar.svg ya que no tenemos el aula virtual.
+
+*/

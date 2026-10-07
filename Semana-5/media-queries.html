@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio de media queries</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 0.9rem 1.2rem;
+            box-shadow: 0 2px 6px #0000001a;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .navbar input[type="search"] {
+            width: 100%;
+            padding: 0.6rem 0.7rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font: inherit;
+        }
+
+        .navbar ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a {
+            color: #1e293b;
+            text-decoration: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .tarjeta {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.9rem;
+        }
+
+        .falsa-img {
+            height: 70px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #c7d2fe, #a5b4fc);
+            margin-bottom: 0.5rem;
+        }
+
+        .tarjeta h3 {
+            margin: 0 0 0.2rem;
+            font-size: 1rem;
+        }
+
+        .tarjeta p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .estado {
+            text-align: center;
+            font-weight: 700;
+            color: #ef4444;
+            margin: 1.5rem 0;
+        }
+
+        .estado::after {
+            content: "📱 Menos de 768px · MÓVIL";
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .estado {
+                color: #f59e0b;
+            }
+
+            .estado::after {
+                content: "📲 De 768px a 1023px · TABLET";
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .navbar {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .navbar input[type="search"] {
+                flex: 1 1 200px;
+                max-width: 340px;
+            }
+
+            .navbar ul {
+                flex-direction: row;
+                gap: 1.2rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .estado {
+                color: #16a34a;
+            }
+
+            .estado::after {
+                content: "🖥️ 1024px o más · ESCRITORIO";
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Laboratorio de media queries</h1>
+    <p>Reduce el ancho de la ventana o activa el modo dispositivo con Ctrl + Shift + M. Observa cómo cambia el menú y la grilla en 320px, 800px y 1200px.</p>
+    <p class="estado"></p>
+
+    <header class="navbar">
+        <a class="logo" href="#">MiTienda</a>
+        <input type="search" placeholder="Buscar productos..." aria-label="Buscar productos">
+        <nav>
+            <ul>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Mi cuenta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="grid">
+        <article class="tarjeta"><div class="falsa-img"></div><h3>Producto 1</h3><p>$45.000</p></article>
+        <article class="tarjeta"><div class="falsa-img"></div><h3>Producto 2</h3><p>$32.000</p></article>
+        <article class="tarjeta"><div class="falsa-img"></div><h3>Producto 3</h3><p>$58.000</p></article>
+        <article class="tarjeta"><div class="falsa-img"></div><h3>Producto 4</h3><p>$21.000</p></article>
+    </div>
+</body>
+</html>
