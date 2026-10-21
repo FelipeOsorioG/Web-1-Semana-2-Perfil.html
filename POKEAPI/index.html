@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explorador interactivo de Pokémon con datos locales. Busca, filtra, consulta detalles y guarda favoritos.">
+  <meta property="og:title" content="POKEAPI | Explorador Pokémon">
+  <meta property="og:description" content="Explora Pokémon, descubre sus tipos y guarda tus favoritos.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#dc2626">
+  <title>POKEAPI | Explorador Pokémon</title>
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-100">
+  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6" aria-label="Navegación principal">
+      <a href="#inicio" class="flex items-center gap-3" aria-label="POKEAPI, ir al inicio">
+        <span class="pokeball-logo" aria-hidden="true"></span>
+        <span class="text-xl font-black tracking-tight sm:text-2xl">POKE<span class="text-red-600">API</span></span>
+      </a>
+      <button id="menu-toggle" class="rounded-xl border border-slate-300 px-3 py-2 text-sm font-semibold md:hidden dark:border-slate-700" aria-expanded="false" aria-controls="menu-links">☰ Menú</button>
+      <div id="menu-links" class="absolute left-0 right-0 top-full hidden flex-col gap-2 border-b border-slate-200 bg-white p-4 md:static md:flex md:flex-row md:items-center md:border-0 md:bg-transparent md:p-0 dark:border-slate-800 dark:bg-slate-900 md:dark:bg-transparent">
+        <button class="nav-link active" data-view="all">Pokédex</button>
+        <button class="nav-link" data-view="favorites">★ Favoritos <span id="favorite-count" class="ml-1 rounded-full bg-red-100 px-2 py-0.5 text-xs text-red-700 dark:bg-red-950 dark:text-red-200">0</span></button>
+        <button id="theme-toggle" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold hover:border-red-500 hover:text-red-600 dark:border-slate-700" type="button" aria-label="Cambiar tema">☾ Tema</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:py-12">
+    <section class="hero-panel relative overflow-hidden rounded-3xl bg-red-600 px-6 py-9 text-white shadow-xl sm:px-10 sm:py-12">
+      <div class="relative z-10 max-w-3xl">
+        <p class="mb-3 text-sm font-bold uppercase tracking-[0.24em] text-red-100">Tu aventura comienza aquí</p>
+        <h1 class="text-4xl font-black leading-tight sm:text-6xl">Explora el mundo Pokémon</h1>
+        <p class="mt-4 max-w-2xl text-base text-red-50 sm:text-lg">Busca Pokémon, descubre sus tipos y estadísticas, y guarda los que más te gusten en tu Pokédex personal.</p>
+        <div class="mt-6 flex flex-wrap gap-3 text-sm font-semibold">
+          <span class="rounded-full bg-white/15 px-4 py-2">Catálogo local</span>
+          <span class="rounded-full bg-white/15 px-4 py-2">Búsqueda y filtros</span>
+          <span class="rounded-full bg-white/15 px-4 py-2">Favoritos guardados</span>
+        </div>
+      </div>
+      <div class="hero-orb" aria-hidden="true"></div>
+    </section>
+
+    <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="busqueda-titulo">
+      <div class="mb-4 flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+        <div>
+          <h2 id="busqueda-titulo" class="text-xl font-extrabold">Encuentra tu Pokémon</h2>
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Busca por nombre o número y combina los filtros.</p>
+        </div>
+        <button id="clear-filters" class="self-start text-sm font-bold text-red-600 hover:text-red-700 sm:self-auto">Limpiar filtros</button>
+      </div>
+      <form id="search-form" class="grid grid-cols-1 gap-3 md:grid-cols-[minmax(0,1fr)_220px_auto]" role="search">
+        <label class="sr-only" for="search-input">Buscar por nombre o número</label>
+        <input id="search-input" class="field" type="search" placeholder="Ej. Pikachu o 25" autocomplete="off">
+        <label class="sr-only" for="type-filter">Filtrar por tipo</label>
+        <select id="type-filter" class="field">
+          <option value="">Todos los tipos</option>
+          <option value="normal">Normal</option><option value="fire">Fuego</option><option value="water">Agua</option><option value="electric">Eléctrico</option><option value="grass">Planta</option><option value="ice">Hielo</option><option value="fighting">Lucha</option><option value="poison">Veneno</option><option value="ground">Tierra</option><option value="flying">Volador</option><option value="psychic">Psíquico</option><option value="bug">Bicho</option><option value="rock">Roca</option><option value="ghost">Fantasma</option><option value="dragon">Dragón</option><option value="dark">Siniestro</option><option value="steel">Acero</option><option value="fairy">Hada</option>
+        </select>
+        <button class="rounded-xl bg-red-600 px-6 py-3 font-bold text-white transition hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" type="submit">Buscar</button>
+      </form>
+    </section>
+
+    <section class="mt-8" aria-labelledby="results-title">
+      <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 id="results-title" class="text-2xl font-black">Pokédex</h2>
+          <p id="results-summary" class="mt-1 text-sm text-slate-500 dark:text-slate-400" aria-live="polite">Preparando la Pokédex…</p>
+        </div>
+        <span id="loaded-count" class="rounded-full bg-slate-200 px-4 py-2 text-sm font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-200">0 Pokémon</span>
+      </div>
+      <div id="status-panel" class="status-panel" role="status" aria-live="polite">
+        <span class="loader" aria-hidden="true"></span>
+        <p class="mt-3 font-semibold">Cargando Pokémon…</p>
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Cargando los datos locales del explorador.</p>
+      </div>
+      <div id="pokemon-grid" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" aria-live="polite"></div>
+      <div class="mt-8 flex justify-center">
+        <button id="load-more" class="hidden rounded-full border-2 border-red-600 px-7 py-3 font-bold text-red-600 transition hover:bg-red-600 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 disabled:cursor-not-allowed disabled:opacity-50" type="button">Cargar más Pokémon</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-14 border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-7 text-sm text-slate-500 sm:px-6 md:flex-row md:items-center md:justify-between dark:text-slate-400">
+      <p><strong class="text-slate-800 dark:text-slate-100">POKEAPI</strong> · Explorador interactivo de Pokémon</p>
+      <p>Proyecto académico · Datos de ejemplo incluidos en el proyecto.</p>
+    </div>
+  </footer>
+
+  <dialog id="pokemon-dialog" class="pokemon-dialog rounded-3xl bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-slate-950/70 dark:bg-slate-900 dark:text-slate-100">
+    <div id="dialog-content"></div>
+  </dialog>
+</body>
+</html>

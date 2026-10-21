@@ -1,13 +1,21 @@
-
-* {
+/* ===== Reset: width incluye padding y borde ===== */
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
+/* ===== Paleta: verdes y beige en HEX ===== */
 :root {
-    --primario: #3A506B;
-    --texto: #1C2541;
-    --fondo: #F4F7F9;
-    --borde: #D9E1E8;
+    --primario: #2F5D50;          /* verde bosque */
+    --primario-oscuro: #234638;   /* verde bosque oscuro (hover) */
+    --acento: #6B8F71;            /* verde salvia */
+    --texto: #2B3A33;             /* verde casi negro */
+    --fondo: #F5F0E6;             /* beige de la página */
+    --tarjeta: #FBF8F1;           /* beige muy claro */
+    --borde: #D9CFB8;             /* beige oscuro */
+    --fila-par: #EFE8D8;          /* beige para filas pares */
+    --sombra: #CFC5AD;            /* beige grisáceo para sombras */
+    --claro: #FFFFFF;             /* texto sobre fondos verdes */
+    --error: #B3261E;             /* rojo de campo inválido */
 }
 
 body {
@@ -18,62 +26,120 @@ body {
     margin: 0;
 }
 
-main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
+/* ===== Cabecera (Flexbox en columna, todo centrado) ===== */
 header {
     background: var(--primario);
-    color: white;
+    color: var(--claro);
     padding: 40px 20px;
     border-radius: 0 0 15px 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px var(--sombra);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
-header img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid white;
+header h1 {
+    margin: 0;
 }
 
+header p {
+    margin: 4px 0 0;
+}
+
+/* ===== Navegación (Flexbox en fila, con gap) ===== */
 nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
     list-style: none;
     padding: 0;
     margin: 20px 0 0;
 }
 
-nav li {
-    display: inline-block;
-}
-
 nav a {
-    color: white;
+    display: block;
+    color: var(--claro);
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 8px;
 }
 
 nav a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--acento);
+}
+
+nav a:focus {
+    outline: 3px solid var(--borde);
+}
+
+/* ===== Contenido principal: columna centrada, tarjetas separadas con gap ===== */
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .tarjeta {
-    background: white;
+    background: var(--tarjeta);
     border: 1px solid var(--borde);
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    margin-bottom: 20px;
+    box-shadow: 0 3px 8px var(--sombra);
 }
 
+.tarjeta h2 {
+    color: var(--primario);
+    margin-top: 0;
+}
+
+/* ===== Foto: centrada con Flexbox y marco redondo ===== */
+figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 0;
+}
+
+figure img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primario);
+    box-shadow: 0 4px 12px var(--sombra);
+}
+
+figcaption {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+/* ===== Habilidades: Grid responsive con auto-fit y minmax ===== */
+.listas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.listas h3 {
+    color: var(--primario);
+    margin-top: 0;
+}
+
+/* ===== Tabla con efecto cebra ===== */
 table {
     width: 100%;
     border-collapse: collapse;
+}
+
+caption {
+    padding-bottom: 8px;
 }
 
 th,
@@ -85,13 +151,14 @@ td {
 
 th {
     background: var(--primario);
-    color: white;
+    color: var(--claro);
 }
 
 tr:nth-child(even) {
-    background: #EEF2F5;
+    background: var(--fila-par);
 }
 
+/* ===== Formulario ===== */
 form {
     display: flex;
     flex-direction: column;
@@ -108,6 +175,16 @@ textarea {
     font: inherit;
 }
 
+input[type="checkbox"] {
+    width: auto;
+}
+
+.aceptar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 textarea {
     min-height: 120px;
     resize: vertical;
@@ -116,17 +193,17 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    outline: none;
+    outline: 2px solid var(--primario);
     border-color: var(--primario);
 }
 
 input:not(:focus):invalid {
-    border-color: red;
+    border-color: var(--error);
 }
 
 button {
     background: var(--primario);
-    color: white;
+    color: var(--claro);
     border: none;
     padding: 12px 20px;
     border-radius: 8px;
@@ -135,17 +212,15 @@ button {
 }
 
 button:hover {
-    background: #2B3E54;
+    background: var(--primario-oscuro);
 }
 
+button:focus {
+    outline: 3px solid var(--acento);
+}
 
+/* ===== Pie de página ===== */
 footer {
     text-align: center;
     padding: 20px;
 }
-
-/* 
-
-p { color: purple; } 
-
-*/

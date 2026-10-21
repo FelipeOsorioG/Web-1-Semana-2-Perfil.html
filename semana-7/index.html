@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Explorer</title>
+  <meta name="description" content="Explorador de Pokémon con datos de la PokéAPI: busca por nombre, filtra por tipo y mira el detalle de cada uno.">
+  <meta property="og:title" content="Pokédex Explorer">
+  <meta property="og:description" content="Explorador de Pokémon con datos de la PokéAPI.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/tailwind.css">
+</head>
+<body class="min-h-dvh bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+
+  <!--
+    SEMANA 7 · Las tarjetas ya no están escritas a mano: las genera render() desde js/datos.js.
+    Un solo script, con type="module": app.js importa a los demás (abre con Live Server).
+  -->
+  <header class="sticky top-0 z-10 bg-white shadow dark:bg-slate-900 dark:shadow-slate-950">
+    <nav class="relative mx-auto flex max-w-6xl items-center justify-between p-4">
+      <a href="#" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">
+        Pokédex<span class="text-slate-900 dark:text-white">Explorer</span>
+      </a>
+      <button id="btn-menu" type="button"
+              class="rounded-lg p-2 text-2xl hover:bg-slate-100 md:hidden dark:hover:bg-slate-800"
+              aria-label="Abrir menú" aria-controls="menu" aria-expanded="false">☰</button>
+      <ul id="menu"
+          class="absolute top-full right-0 left-0 hidden flex-col gap-1 bg-white p-4 shadow-lg
+                 md:static md:flex md:flex-row md:gap-6 md:bg-transparent md:p-0 md:shadow-none
+                 dark:bg-slate-900">
+        <li><a href="#" aria-current="page" class="block rounded-lg px-3 py-2 font-medium text-indigo-600 md:p-0 dark:text-indigo-400">Pokémon</a></li>
+        <li><a href="#" class="block rounded-lg px-3 py-2 text-slate-700 hover:bg-slate-100 hover:text-indigo-600 md:p-0 md:hover:bg-transparent dark:text-slate-300 dark:hover:bg-slate-800">Acerca de</a></li>
+        <li><a href="#" class="block rounded-lg px-3 py-2 text-slate-700 hover:bg-slate-100 hover:text-indigo-600 md:p-0 md:hover:bg-transparent dark:text-slate-300 dark:hover:bg-slate-800">Favoritos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-6xl p-4">
+    <h1 class="mt-4 text-3xl font-bold md:text-4xl">Pokémon</h1>
+    <p id="contador" class="mt-1 text-slate-500 dark:text-slate-400"></p>
+
+    <form id="form-busqueda" class="my-6 flex flex-col gap-3 md:flex-row" role="search">
+      <label for="busqueda" class="sr-only">Buscar pokémon</label>
+      <input id="busqueda" type="search" placeholder="Buscar por nombre…" minlength="2"
+             class="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2
+                    focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none
+                    user-invalid:border-rose-500
+                    dark:border-slate-600 dark:bg-slate-800 dark:focus:ring-indigo-900">
+
+      <label for="filtro-tipo" class="sr-only">Filtrar por tipo</label>
+      <select id="filtro-tipo"
+              class="rounded-lg border border-slate-300 bg-white px-3 py-2
+                     focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none
+                     dark:border-slate-600 dark:bg-slate-800 dark:focus:ring-indigo-900">
+        <option value="">Todos los tipos</option>
+        <option value="normal">Normal</option>
+        <option value="fire">Fuego</option>
+        <option value="water">Agua</option>
+        <option value="electric">Eléctrico</option>
+        <option value="grass">Planta</option>
+        <option value="ice">Hielo</option>
+        <option value="fighting">Lucha</option>
+        <option value="poison">Veneno</option>
+        <option value="ground">Tierra</option>
+        <option value="flying">Volador</option>
+        <option value="psychic">Psíquico</option>
+        <option value="bug">Bicho</option>
+        <option value="rock">Roca</option>
+        <option value="ghost">Fantasma</option>
+        <option value="dragon">Dragón</option>
+        <option value="dark">Siniestro</option>
+        <option value="steel">Acero</option>
+        <option value="fairy">Hada</option>
+      </select>
+
+      <button type="submit"
+              class="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white transition
+                     hover:bg-indigo-700 active:scale-95 disabled:cursor-not-allowed disabled:bg-slate-300">
+        Buscar
+      </button>
+    </form>
+
+    <h2 class="mt-6 mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase dark:text-slate-400">Resultados</h2>
+    <section id="grilla" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Vacía a propósito: las tarjetas las escribe render() a partir del array pokemones -->
+    </section>
+  </main>
+
+  <footer class="mt-12 border-t border-slate-200 py-6 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">
+    Datos: <a href="https://pokeapi.co" class="underline hover:text-indigo-600">PokéAPI</a> · Hecho con Tailwind CSS v4
+  </footer>
+
+  <dialog id="modal-detalle" aria-labelledby="modal-nombre"
+          class="m-auto w-full max-w-md overflow-hidden rounded-2xl bg-white p-0 shadow-2xl
+                 backdrop:bg-slate-900/60 backdrop:backdrop-blur-sm
+                 dark:bg-slate-800 dark:text-slate-100">
+    <img id="modal-img" src="" alt="" class="aspect-square w-full bg-slate-100 object-contain p-4 dark:bg-slate-700">
+    <div class="space-y-4 p-6">
+      <h2 id="modal-nombre" class="text-2xl font-bold text-slate-900 capitalize dark:text-white"></h2>
+      <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+        <dt class="text-slate-500 dark:text-slate-400">Número</dt> <dd id="modal-numero" class="font-medium"></dd>
+        <dt class="text-slate-500 dark:text-slate-400">Tipos</dt>  <dd id="modal-tipos" class="font-medium"></dd>
+        <dt class="text-slate-500 dark:text-slate-400">Peso</dt>   <dd id="modal-peso" class="font-medium"></dd>
+        <dt class="text-slate-500 dark:text-slate-400">Altura</dt> <dd id="modal-altura" class="font-medium"></dd>
+      </dl>
+      <!-- method="dialog": este botón cierra el modal SIN JavaScript -->
+      <form method="dialog">
+        <button class="w-full rounded-lg border border-slate-300 py-2 font-semibold
+                       hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-700">
+          Cerrar
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

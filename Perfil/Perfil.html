@@ -2,39 +2,40 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Felipe Osorio | Perfil</title>
-  <meta name="description" content="Descripción breve de tu perfil">
+  <meta name="description" content="Perfil de Felipe Osorio Grajales, estudiante de la Universidad de Caldas: formación, habilidades y formulario de contacto.">
 
-  
   <meta property="og:title" content="Felipe Osorio | Perfil">
-  <meta property="og:description" content="Perfil y avatar de Felipe>
+  <meta property="og:description" content="Perfil y avatar de Felipe Osorio, estudiante de la Universidad de Caldas.">
   <meta property="og:image" content="images.jpeg">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://github.com/FelipeOsorioG/Web-1-Semana-2-Perfil.html.git">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-    <header>
-      
-      <h1>Felipe Osorio</h1>
-      <p>Estudiante de la Universidad de Caldas</p>
-      
-      <nav>
-    <ul>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#formacion">Formación</a></li>
-      <li><a href="#habilidades">Habilidades</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-<main>
-    </header>
+  <header>
+    <h1>Felipe Osorio</h1>
+    <p>Estudiante de la Universidad de Caldas</p>
+
+    <nav>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
 
     <section id="sobre-mi" class="tarjeta">
       <h2>Sobre mí</h2>
       <p>
-        Me llamo Felipe Osorio Grajales, soy un estudiante de la universidad 
-        de Caldas en estos momentos me gustaria concentrarme en mis estudios 
+        Me llamo Felipe Osorio Grajales, soy un estudiante de la universidad
+        de Caldas en estos momentos me gustaria concentrarme en mis estudios
         y si tengo tiempo trabajar por horas.
       </p>
 
@@ -64,28 +65,34 @@
         </tbody>
       </table>
     </section>
-    
-     <section id="habilidades" class="tarjeta">
+
+    <section id="habilidades" class="tarjeta">
       <h2>Habilidades</h2>
 
-      <h3>Tecnologías que conozco</h3>
-      <ul>
-        <li>Tecnología en Internet de las Cosas (IoT)</li>
-        <li>Tecnología Ciberseguridad y Cloud Computing</li>
-        <li>Tecnología Inteligencia Artificial y Machine Learning</li>
-      </ul>
+      <div class="listas">
+        <div>
+          <h3>Tecnologías que conozco</h3>
+          <ul>
+            <li>Tecnología en Internet de las Cosas (IoT)</li>
+            <li>Tecnología Ciberseguridad y Cloud Computing</li>
+            <li>Tecnología Inteligencia Artificial y Machine Learning</li>
+          </ul>
+        </div>
 
-      <h3>Top 3 para aprender este semestre</h3>
-      <ol>
-        <li>Vulnerabilidad en paginas Html</li>
-        <li>Programacion de Front</li>
-        <li>Programacion de Backend</li>
-      </ol>
+        <div>
+          <h3>Top 3 para aprender este semestre</h3>
+          <ol>
+            <li>Vulnerabilidad en paginas Html</li>
+            <li>Programacion de Front</li>
+            <li>Programacion de Backend</li>
+          </ol>
+        </div>
+      </div>
     </section>
 
-      <section id="contacto" class="tarjeta">
-        <h2>Contacto</h2>
-        <form>
+    <section id="contacto" class="tarjeta">
+      <h2>Contacto</h2>
+      <form>
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" required minlength="3">
 
@@ -99,21 +106,22 @@
           <option value="consulta">Consulta</option>
           <option value="otro">Otro</option>
         </select>
-      
+
         <label for="mensaje">Mensaje</label>
         <textarea id="mensaje" name="mensaje" required minlength="10"></textarea>
 
-        <label for="aceptar">
+        <label for="aceptar" class="aceptar">
           <input type="checkbox" id="aceptar" name="aceptar" required>
           Acepto el tratamiento de mis datos
         </label>
 
         <button type="submit">Enviar</button>
       </form>
-   </section>
-</main>
+    </section>
 
-<footer>
+  </main>
+
+  <footer>
     <p>Felipe.Osorio54371@ucaldas.edu.co | 2026</p>
   </footer>
 
